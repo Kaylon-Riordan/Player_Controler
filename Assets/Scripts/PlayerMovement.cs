@@ -7,12 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
     public float jumpHeight = 7f;
     private Rigidbody2D rBody;
-    private Animator mator;
+    private Animator anim;
     private bool grounded;
     private bool faceRight = true;
     private void Awake(){
         rBody = GetComponent<Rigidbody2D>();
-        mator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         rBody.velocity = new Vector2(horizontalInput * speed, rBody.velocity.y);
+        anim.SetBool("Walk", horizontalInput!=0);
 
         if((horizontalInput>0 && !faceRight)||(horizontalInput<0 && faceRight)){
             Flip();
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void jump(){
         rBody.velocity = new Vector2(rBody.velocity.x, jumpHeight);
+        anim.SetTrigger("Jump");
         grounded = false;
     }
     private void OnCollisionEnter2D(Collision2D other){
