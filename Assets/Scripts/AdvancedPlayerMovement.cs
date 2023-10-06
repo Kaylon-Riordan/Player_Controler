@@ -62,12 +62,12 @@ public class AdvancedPlayerMovement : MonoBehaviour
         {
             if(!isCrouching)
             {
-                transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.)
+                transform.localScale = new Vector3(transform.localScale.x, crouchHeight, transform.localScale.z);
                 isCrouching = true;
             }
             else if(isCrouching)
             {
-                transform.localScale = new Vector3(transform.localScale.x, 0,)
+                transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z);
                 isCrouching = false;
             }
         }
