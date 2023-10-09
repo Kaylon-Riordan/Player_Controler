@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class AdvancedPlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
     public float jumpHeight = 7f;
-    public float dashspped = 20f;
+    public float dashSpeed = 20f;
     public float crouchHeight = 0.5f;
     public LayerMask whatIsGround;
     public Transform groundCheckPoint;
@@ -42,6 +44,11 @@ public class AdvancedPlayerMovement : MonoBehaviour
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         anim.SetBool("Walk", horizontalInput != 0);
 
+        if(horizontalInput != 0 && grounded)
+        {
+            PlaySound(footstepSound);
+        }
+
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             Jump();
@@ -56,6 +63,11 @@ public class AdvancedPlayerMovement : MonoBehaviour
         if((horizontalInput>0 && !faceRight)||(horizontalInput<0 && faceRight))
         {
             Flip();
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift) && !isDashing)
+        {
+            StartCoroutine(Dash());
         }
 
         if(Input.GetKeyDown(KeyCode.DownArrow) && grounded)
@@ -75,9 +87,10 @@ public class AdvancedPlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-    body.velocity = new Vector2(body.velocity.x, jumpHeight);
-    anim.SetTrigger("Jump");
-    grounded = false;
+        body.velocity = new Vector2(body.velocity.x, jumpHeight);
+        anim.SetTrigger("Jump");
+        grounded = false;
+        PlaySound(jumpSound);
     }
 
     private void Flip()
@@ -86,5 +99,22 @@ public class AdvancedPlayerMovement : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
         faceRight = !faceRight;
+    }
+
+    IEnumerator Dash()
+    {
+        PlaySound(dashSound);
+        float originalSpeed = speed;
+        speed = dashSpeed;
+        isDashing = true;
+        yield return new WaitForSeconds(0.2f);
+        speed = originalSpeed;
+        isDashing = false;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }
