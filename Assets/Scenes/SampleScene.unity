@@ -2317,7 +2317,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bb7c1454550323c46842c4aabddc570a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2364,10 +2364,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 1437586548}
-  groundCheckRadious: 1
+  groundCheckRadius: 0.5
   jumpSound: {fileID: 8300000, guid: e87b3b70cfed9e940bcf49bdd22633c3, type: 3}
   dashSound: {fileID: 8300000, guid: f7daf6c415693d642887e4952e067368, type: 3}
   footstepSound: {fileID: 8300000, guid: 50dc9d889923b7f4f816393a65fab8ce, type: 3}
+  attackDamage: 1
+  attackRange: 1
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  grounded: 0
+  canDoubleJump: 0
 --- !u!82 &1396119540
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 966981692215789950}
   - component: {fileID: 2413466461781543525}
   - component: {fileID: 7939295466254180860}
-  - component: {fileID: 7297101035302012740}
+  - component: {fileID: 8193042074789228325}
+  - component: {fileID: 4503183103422191370}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7317760975045095362
 SpriteRenderer:
@@ -174,7 +175,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.0625, y: 1.5}
   m_Direction: 0
---- !u!114 &7297101035302012740
+--- !u!114 &8193042074789228325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5817577027587096273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53530c34532c0664eb080af1c24c79b2, type: 3}
+  m_Script: {fileID: 11500000, guid: f479deae861200048b8736232411d9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
@@ -193,3 +194,15 @@ MonoBehaviour:
     m_Bits: 0
   maxHealth: 5
   damage: 1
+--- !u!114 &4503183103422191370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817577027587096273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03317a49c66bbb479ad0c50bace425c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

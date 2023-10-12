@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints; 
 
     [Header("Limit Settings")]
-    [SerializeField] private int maxEnemies = 5; 
+    [SerializeField] private int maxEnemies = 5;
     private int currentEnemies = 0; 
 
     // Start is called before the first frame update
