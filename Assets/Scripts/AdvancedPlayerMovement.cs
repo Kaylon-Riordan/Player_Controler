@@ -40,6 +40,28 @@ public class AdvancedPlayerMovement : MonoBehaviour
         audioPlayer = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)&& grounded)
+        {
+            canDoubleJump = true; 
+            Jump();
+        }
+        else if(Input.GetKeyDown(KeyCode.Space)&&canDoubleJump)
+        {
+            Jump();
+            canDoubleJump = false;
+        }
+            
+        private void Jump()
+        {
+            body.velocity = new Vector2(body.velocity.x, jumpHeight);
+            anim.SetTrigger("jump");
+            grounded = false;
+            PlaySound(jumpSound);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -52,18 +74,6 @@ public class AdvancedPlayerMovement : MonoBehaviour
         if(horizontalInput != 0 && grounded)
         {
             PlaySound(footstepSound);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space)&& grounded)
-        {
-            canDoubleJump = true; 
-            Jump();
-             
-        }
-        else if(Input.GetKeyDown(KeyCode.Space)&&canDoubleJump)
-        {
-            Jump();
-            canDoubleJump = false;
         }
 
         if((horizontalInput>0&& !facingRight)||(horizontalInput<0&&facingRight))
@@ -98,12 +108,6 @@ public class AdvancedPlayerMovement : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale; 
         facingRight = !facingRight; 
-    }
-    private void Jump(){
-        body.velocity = new Vector2(body.velocity.x, jumpHeight);
-        anim.SetTrigger("jump");
-        grounded = false;
-        PlaySound(jumpSound);
     }
 
     IEnumerator Dash(){
