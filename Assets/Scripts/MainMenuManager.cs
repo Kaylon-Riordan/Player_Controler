@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -8,11 +8,11 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private string optionsSceneName = "OptionsScene";
 
     // Start is called before the first frame update
-    void StartGame()
+    public void StartGame()
     {
-        SceneManager.LoadScene(gameSceneName);
+       SceneManager.LoadScene(gameSceneName); 
     }
-
+    
     public void OpenOptions()
     {
         SceneManager.LoadScene(optionsSceneName);
@@ -20,12 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit;
+        Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
